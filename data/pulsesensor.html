@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+</html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <title>miaomiao</title>
+  <style>
+    html {
+      font-family: Helvetica;
+      display: inline-block;
+      margin: 0px auto;
+      text-align: center;
+    }
+
+
+    body {
+      margin-top: 50px;
+    }
+
+    form {
+      margin-top: 10px
+    }
+
+    h1 {
+      color: #ff6699;
+      margin: 50px auto 30px;
+    }
+
+    p {
+      color: #444444;
+      margin-bottom: 50px;
+    }
+  </style>
+
+</head>
+
+
+<body>
+  <h1>喵喵帮你测心率</h1>
+  <p>下面是您的心率<br>The following data is your pulse</p>
+  <div>
+    您的心率 : <span id="ADCValue">invalid</span><br>
+  </div>
+
+  <h3>Welocom to miaomiao!</h3>
+
+  <script>
+  
+  setInterval(function () {
+      // Call a function repetatively with 2 Second interval
+      getData();
+    }, 2000); //2000mSeconds update rate
+
+    function getData() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("ADCValue").innerHTML =
+            this.responseText;
+        }
+      };
+      xhttp.open("GET", "pulsesensor/readADC", true);
+      xhttp.send();
+    }
+
+  </script>
+</body>
+
+
+</html>
