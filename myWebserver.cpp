@@ -1,6 +1,7 @@
 #include "myWebserver.h"
 
-
+#define ssid "miaomiao"     //这里改成你的设备当前环境下接入点名字
+#define password "12345678" //这里改成你的设备当前环境下接入点密码
 
 void Mywebserver::setup()
 {
