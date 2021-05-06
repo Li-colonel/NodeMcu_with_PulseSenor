@@ -4,7 +4,7 @@
 void Pulsesensor::begin()
 {
   pinMode(blinkPin, OUTPUT);
-  myTicker.attach_ms(2,std::bind(&Pulsesensor::interruptSetup, this));
+  myTicker.attach_ms(12,std::bind(&Pulsesensor::interruptSetup, this));
 }
 /*
 void pulsesensor::sendData()
@@ -28,7 +28,7 @@ int Pulsesensor::readBPM()
 void Pulsesensor::interruptSetup()
 {
   Signal = analogRead(pulsePin);
-  sampleCounter += 2;
+  sampleCounter += 12;
   int N = sampleCounter - lastBeatTime;
 
   if (Signal < thresh && N > (IBI / 5) * 3)
